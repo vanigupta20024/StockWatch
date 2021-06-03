@@ -1,0 +1,89 @@
+<!doctype html>
+{% load static %}
+<!-- Image and text -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="{% static 'landing_page/logo.png' %}"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo&display=swap" rel="stylesheet">
+    <style>
+      footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: midnightblue;
+        text-align: left;
+        color: white;
+      }
+    </style>
+    <title>StockWatch</title>
+  </head>
+  <nav class="navbar navbar-light" style="background-color:midnightblue;">
+    <a class="navbar-brand" href="#" style="font-size:25px;color:white;">
+      <img src="{% static 'landing_page/logo.png' %}" width="40" height="40" class="d-inline-block align-top" 
+      alt="" style="margin-right:5px; margin-left:5px;"> StockWatch
+    </a>
+    <div style="float:left;">
+      <a href="https://www.nseindia.com/" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fa fa-arrow-circle-right"></i>  NSE Website</button></a>
+      <a href="https://www.bseindia.com/" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fa fa-arrow-circle-right"></i>  BSE Website</button></a>
+      <a href="/listing/" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fa fa-list-ul"></i>  Listing</button></a>
+    </div>
+  </nav>
+  <body>
+    <div class="card" style="margin-left:5%;margin-right:5%;margin-top:2%;box-shadow: 5px 8px 20px 5px lightblue;">
+      <div class="card-body" style="font-family: 'KoHo', sans-serif;font-size:22px;">
+        StockWatch is a website which shows stock market information in real time. It provides top ten losers and gainers of the
+        day as observed in the stock market along with their other financial data, stock quotes, percentages and graphs. 
+        The data will have a maximum latency of 1 minute. <br>All financial data of the company including week highs and lows 
+        are listed as well as the company's metadata. Most graphs contain thousands of data point so that you can have a look
+        the ticks at each point of time. You can also filter the dates to look at the graph for a specific period of time.
+      </div>
+    </div>
+    <div id="main-block" style="width:100%;margin-top:2%;">
+      <div id="left-block" style="float:left; width:58%;margin-left:5%;">
+        <div class="card" style="box-shadow: 5px 8px 20px 5px lightblue;">
+          <div class="card-body">
+            <h4 class="card-title" style="color:darkblue;">Contribute to this project</h4>
+            <p class="card-text" style="font-family: 'KoHo', sans-serif;font-size:21px;">You can contribute to this project on Github! You can do that 
+            by creating any issue or adding or suggesting any feature. Feel free to do so!</p>
+            <a href="https://github.com/vanigupta20024/StockWatch" target="_blank" class="btn btn-outline-primary">Take me there!</a>
+          </div>
+        </div>
+      </div>
+      <div id="right-block" style="margin-left:63%; width:33%;">
+        <div class="card" style="margin:2%;box-shadow: 5px 8px 20px 5px lightblue;">
+          <div class="card-body">
+            <h4 class="card-title" style="color:darkblue;">Latest Listing</h4>
+            <p class="card-text" style="font-family: 'KoHo', sans-serif;font-size:20px;">Watch the latest top gainers and losers. Also shows the current market and search listings!</p>
+            <a href="/listing/" target="_blank" class="btn btn-outline-primary">See listing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+    <div id="footer" style="margin-top:1%;">
+      <p style="display:inline;margin-left:2%;font-size:20px;">Connect with me:</p>
+      <ul style="display:inline;font-size:22px;margin-left:2%;" class="list-inline">
+                <li class="list-inline-item"><a href="https://github.com/vanigupta20024" target="_blank"><i class="fa fa-github"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.linkedin.com/in/vanigupta20024/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                <li class="list-inline-item"><a href="https://twitter.com/VaniGupta24" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href="https://t.me/vanigupta" target="_blank"><i class="fa fa-telegram" target="_blank"></i></a></li>
+                <li class="list-inline-item"><a href="https://stackoverflow.com/users/12706049/vani-gupta" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+            </ul>
+            <p style="display:block; float:right;margin-right:2%;font-size:20px;" class="copyright">Made with <i class="fa fa-code"></i> and <i class="fa fa-heart-o"></i>!</p>
+    </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

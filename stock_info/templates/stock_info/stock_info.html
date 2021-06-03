@@ -1,0 +1,171 @@
+<!doctype html>
+{% load static %}
+<!-- Image and text -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="{% static 'landing_page/logo.png' %}"/>
+    <title>StockWatch</title>
+    <style>
+      footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: midnightblue;
+        text-align: left;
+        color: white;
+      }
+    </style>
+  </head>
+  <nav class="navbar navbar-light" style="background-color:midnightblue;">
+    <a class="navbar-brand" href="#" style="font-size:25px;color:white;">
+      <img src="{% static 'landing_page/logo.png' %}" width="40" height="40" class="d-inline-block align-top" 
+      alt="" style="margin-right:5px; margin-left:5px;"> StockWatch
+    </a>
+    <div style="float:left;">
+      <a href="https://www.nseindia.com/" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fa fa-arrow-circle-right"></i>  NSE Website</button></a>
+      <a href="https://www.bseindia.com/" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fa fa-arrow-circle-right"></i>  BSE Website</button></a>
+      <a href="/stockwatch/about" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fa fa-info-circle"></i>  About</button></a>
+      <a href="https://github.com/vanigupta20024/StockWatch" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fab fa fa-github"></i>  Contribute</button></a>
+    </div>
+  </nav>
+    <div class="alert alert-info" id="alert">
+      Please expect some delay while the page completely loads.
+    </div>
+    <div class="container" style="margin-left:8%;margin-right:10%;">
+      <h1 style="color:midnightblue;"><br>{{ name }}</h1>
+      {% if price_info.pChange < 0 %}
+        <h3 style="color: red;">{{ price_info.lastPrice }}  ({{ price_info.pChange |truncatechars:5}})</h3><br>
+      {% else %}
+        <h3 style="color: green;">{{ price_info.lastPrice }}  ({{ price_info.pChange |truncatechars:5}})</h3><br>
+      {% endif %}
+      <div class="graph container" style="margin:auto;border:dashed;box-shadow: 5px 8px 20px 5px cornflowerblue;">
+        <canvas id="myChart" width="300" height="200"></canvas>
+      </div>
+      <div style="margin-top:5%"></div>
+      <button type="button" class="btn btn-primary btn-block" id="fin-info" style="width:20%;float:left;">Financial Information</button><br><br><br>
+      <div class="container" id="fin-information">
+        <div class="row">
+          <div class="col">Change</div>
+          <div class="col">{{ price_info.change |truncatechars:5 }}</div>
+          <div class="col">Percentage Change</div>
+          <div class="col">{{ price_info.pChange |truncatechars:5 }}</div>
+          <div class="w-100"></div>
+          <div class="col">Intraday High</div>
+          <div class="col">{{ price_info.intraDayHighLow.max }}</div>
+          <div class="col">Intraday low</div>
+          <div class="col">{{ price_info.intraDayHighLow.min }}</div>
+          <div class="w-100"></div>
+          <div class="col">Week High</div>
+          <div class="col">{{ price_info.weekHighLow.max }}</div>
+          <div class="col">Week High - Date</div>
+          <div class="col">{{ price_info.weekHighLow.maxDate }}</div>
+          <div class="w-100"></div>
+          <div class="col">Week Low</div>
+          <div class="col">{{ price_info.weekHighLow.min }}</div>
+          <div class="col">Week Low - Date</div>
+          <div class="col">{{ price_info.weekHighLow.minDate }}</div>
+          <div style="margin-top:5%"></div>  
+        </div>
+      </div>
+      <button type="button" id="metadata"class="btn btn-primary btn-block" style="width:20%;float:left;">Other Information</button><br><br><br>
+      <div class="container" id="meta-info" style="margin-bottom:5%;">
+        <div class="row">
+          <div class="col">Symbol</div>
+          <div class="col">{{ info.symbol }}</div>
+          <div class="w-100"></div>
+          <div class="col">Company Name</div>
+          <div class="col">{{ info.companyName }}</div>
+          <div class="w-100"></div>
+          <div class="col">Series</div>
+          <div class="col">{{ metadata.series }}</div>
+          <div class="w-100"></div>
+          <div class="col">Industry</div>
+          <div class="col">{{ info.industry }}</div>
+          <div class="w-100"></div>
+          <div class="col">Issue Cap</div>
+          <div class="col">{{ security_info.issuedCap }}</div>
+          <div class="w-100"></div>
+          <div class="col">ISIN</div>
+          <div class="col">{{ info.isin }}</div>
+          <div class="w-100"></div>
+          <div class="col">Listing Date</div>
+          <div class="col">{{ metadata.listingDate }}</div>
+          <div class="w-100"></div>
+          <div class="col">Class of Share</div>
+          <div class="col">{{ security_info.classOfShare }}</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin:7%"></div>
+    <footer>
+      <div id="footer" style="margin-top:1%;">
+        <p style="display:inline;margin-left:2%;font-size:20px;">Connect with me:</p>
+        <ul style="display:inline;font-size:22px;margin-left:2%;" class="list-inline">
+          <li class="list-inline-item"><a href="https://github.com/vanigupta20024" target="_blank"><i class="fa fa-github"></i></a></li>
+          <li class="list-inline-item"><a href="https://www.linkedin.com/in/vanigupta20024/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+          <li class="list-inline-item"><a href="https://twitter.com/VaniGupta24" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li class="list-inline-item"><a href="https://t.me/vanigupta" target="_blank"><i class="fa fa-telegram" target="_blank"></i></a></li>
+          <li class="list-inline-item"><a href="https://stackoverflow.com/users/12706049/vani-gupta" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
+        </ul>
+        <p style="display:block; float:right;margin-right:2%;font-size:20px;" class="copyright">Made with <i class="fa fa-code"></i> and <i class="fa fa-heart-o"></i>!</p>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.1/chart.min.js" integrity="sha512-tOcHADT+YGCQqH7YO99uJdko6L8Qk5oudLN6sCeI4BQnpENq6riR6x9Im+SGzhXpgooKBRkPsget4EOoH5jNCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      $('footer').hide();
+      $(window).scroll(function(){
+        if($(window).scrollTop() + $(window).height() == $(document).height()){
+          $('footer').fadeIn(200);
+        }
+        else{
+          $('footer').hide();
+        }
+      });
+      $("#fin-information").hide();
+      $("#meta-info").hide();
+      $("#alert").fadeTo(5000, 200).slideUp(200, function(){
+        $("#alert").slideUp(200);
+      });
+      var ctx = $('#myChart');
+      var tick = {{ ticks | escapejs }}
+      var list = [];
+        for (var i = 0; i < tick.length; i++) {
+        list.push(" ")
+      }
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: list,
+          datasets: [{
+            label: "Stock data",
+            data: tick,
+            borderColor: 'rgb(32,178,170)',
+            tension: 2.0,
+            borderWidth: 1
+          }]
+        },
+        options:{
+          maintainAspectRatio:false
+        }
+      });
+    </script>
+    <script>
+    $("#fin-info").click(function(){
+      $("#fin-information").toggle("slow");
+    });
+    $("#metadata").click(function(){
+      $("#meta-info").toggle("slow");
+    });
+    </script>
+  </body>
+  </html>
