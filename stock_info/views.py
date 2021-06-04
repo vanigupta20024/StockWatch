@@ -5,18 +5,16 @@ from jugaad_data.nse import NSELive
 
 def stock_info(request, stock_name):
     path = 'stock_info/static/stock_info/stock_data.json'
-    # data =  open('stock_info/static/stock_info/stock_data.json', 'r')
     with open(path, 'r') as j:
         json_data = json.loads(j.read())
-    # json_data = json.loads(json.dumps(eval(data.read())))
     stock_name = json_data[stock_name]
     n = NSELive()
     ticks = []
     tick_data = n.tick_data(stock_name)['grapthData'][:]
     q = n.stock_quote(stock_name)
     price_info = q['priceInfo']
-    price_info['pChange'] = price_info['pChange'][:6]
-    price_info['change'] = price_info['change'][:6]
+    price_info['pChange'] = float(str(price_info['pChange'])[:6])
+    price_info['change'] = float(str(price_info['change'])[:6])
     metadata = q['metadata']
     security_info = q['securityInfo']
     info = q['info']
