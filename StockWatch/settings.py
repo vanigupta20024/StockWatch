@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-utqdgzcq=e_rw=50f(sm*wej%8$w-f3rrd#$3m74d0i3dp06c('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost','stockwatch-app.herokuapp.com']
 
