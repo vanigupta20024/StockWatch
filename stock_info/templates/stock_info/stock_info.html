@@ -44,9 +44,9 @@
     <div class="container" style="margin-left:8%;margin-right:10%;">
       <h1 style="color:midnightblue;"><br>{{ name }}</h1>
       {% if price_info.pChange < 0 %}
-        <h3 style="color: red;">{{ price_info.lastPrice }}  ({{ price_info.pChange |truncatechars:5}})</h3><br>
+        <h3 style="color: red;">{{ price_info.lastPrice }}  ({{ price_info.pChange }})</h3><br>
       {% else %}
-        <h3 style="color: green;">{{ price_info.lastPrice }}  ({{ price_info.pChange |truncatechars:5}})</h3><br>
+        <h3 style="color: green;">{{ price_info.lastPrice }}  ({{ price_info.pChange }})</h3><br>
       {% endif %}
       <div class="graph container" style="margin:auto;border:dashed;box-shadow: 5px 8px 20px 5px cornflowerblue;">
         <canvas id="myChart" width="300" height="200"></canvas>
@@ -56,9 +56,9 @@
       <div class="container" id="fin-information">
         <div class="row">
           <div class="col">Change</div>
-          <div class="col">{{ price_info.change |truncatechars:5 }}</div>
+          <div class="col">{{ price_info.change }}</div>
           <div class="col">Percentage Change</div>
-          <div class="col">{{ price_info.pChange |truncatechars:5 }}</div>
+          <div class="col">{{ price_info.pChange }}</div>
           <div class="w-100"></div>
           <div class="col">Intraday High</div>
           <div class="col">{{ price_info.intraDayHighLow.max }}</div>

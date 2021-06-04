@@ -15,6 +15,8 @@ def stock_info(request, stock_name):
     tick_data = n.tick_data(stock_name)['grapthData'][:]
     q = n.stock_quote(stock_name)
     price_info = q['priceInfo']
+    price_info['pChange'] = price_info['pChange'][:6]
+    price_info['change'] = price_info['change'][:6]
     metadata = q['metadata']
     security_info = q['securityInfo']
     info = q['info']
