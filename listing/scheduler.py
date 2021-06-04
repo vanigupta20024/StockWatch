@@ -69,7 +69,9 @@ def metadata_json():
 
     losers = json.dumps(add_data(top_losers))
     gainers = json.dumps(add_data(top_gainers))
-    s_input =  open(r'listing\static\listing\stock_data_list.json', 'r')
+    json_path = 'listing/static/listing/stock_data_list.json'
+    with open(json_path, 'r') as jp:
+        s_input = json.loads(json.reads())
     search_input = json.dumps(eval(s_input.read()))
 
     data = {
