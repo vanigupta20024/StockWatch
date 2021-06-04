@@ -1,7 +1,10 @@
-![Logo](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/logo.ico) # StockWatch
+<img src="drawing.jpg" alt="drawing" width="50"/>
+# StockWatch
+
+Website for viewing stock data or related information in real time. There could be a delay of 1 minute (local caching) since updating it every second will have a huge load on backend (in free services). Daily top losing and gainer stocks can be visible along with tick data. Most graphs have a live tick data with more than 10 thousand points. (More functionality on the way).
 
 #### Website:
-Visit: [StockWatch](https://stockwatch-app.herokuapp.com/)
+Live project deployed to heroku: [StockWatch](https://stockwatch-app.herokuapp.com/)
 
 #### Tech stack:
 ![Django](https://img.shields.io/badge/-Django-red)
@@ -27,3 +30,5 @@ Visit: [StockWatch](https://stockwatch-app.herokuapp.com/)
 ![Landing](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/landing_page.PNG)
 ![Listing](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/listing.jpg)
 ![Info](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/landing_page.PNG)
+
+Special mentions: [Aakash Dinkar](https://github.com/aakashdinkar)
