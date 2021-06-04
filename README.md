@@ -28,14 +28,17 @@ Live project deployed to heroku: [StockWatch](https://stockwatch-app.herokuapp.c
 
 #### Screenshots:
 
-##### Landing Page:
+#### Landing Page:
+Basic landing page with minimal functionality
 ![Landing](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/landing_page.PNG)
 
 
-##### Listing Page:
+#### Listing Page: 
+Lists most viewed indices, top gainers of the day, top losers of the day and an option to search through thousands of company listings.
 ![Listing](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/listing.jpg)
 
-##### Stock Info:
-![Info](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/landing_page.PNG)
+#### Stock Info:
+Financial information and metadata/company specific data related to a particular stock with graph and tick points.
+![Info](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/info_page.PNG)
 
 Special mentions: [Aakash Dinkar](https://github.com/aakashdinkar)
