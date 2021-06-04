@@ -1,7 +1,9 @@
-<img src="drawing.jpg" alt="drawing" width="50"/>
 # StockWatch
+<p align="center">
+  <img width="460" height="300" src="https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/logo.ico">
+</p>
 
-Website for viewing stock data or related information in real time. There could be a delay of 1 minute (local caching) since updating it every second will have a huge load on backend (in free services). Daily top losing and gainer stocks can be visible along with tick data. Most graphs have a live tick data with more than 10 thousand points. (More functionality on the way).
+Website for viewing stock data or related information in real time. There could be a delay of 1 minute (local caching) since updating it every second will have a huge load on backend (in free services). Daily top losing and gainer stocks can be visible along with tick data. Most graphs have a live tick data with more than 10 thousand points.
 
 #### Website:
 Live project deployed to heroku: [StockWatch](https://stockwatch-app.herokuapp.com/)
