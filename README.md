@@ -30,7 +30,12 @@ Live project deployed to heroku: [StockWatch](https://stockwatch-app.herokuapp.c
 
 ##### Landing Page:
 ![Landing](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/landing_page.PNG)
+
+
+##### Listing Page:
 ![Listing](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/listing.jpg)
+
+##### Stock Info:
 ![Info](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/landing_page.PNG)
 
 Special mentions: [Aakash Dinkar](https://github.com/aakashdinkar)
