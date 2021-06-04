@@ -24,4 +24,4 @@ urlpatterns = [
     path('', RedirectView.as_view(url='stockwatch/about')),
     path('stockwatch/', include('landing_page.urls')),
     path('listing/', include('listing.urls')),
-] 
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
