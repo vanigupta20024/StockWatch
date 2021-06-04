@@ -5,7 +5,7 @@ import os
     
 def listing(request):
     path = os.path.join(settings.BASE_DIR, 'static')
-    with open(r'static\updated_data.json', 'r') as file:
+    with open('static/updated_data.json', 'r') as file:
         json_data = json.load(file)
         upper_list = json_data['upper']
         losers = json_data['loss']

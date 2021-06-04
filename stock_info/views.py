@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from jugaad_data.nse import NSELive
 
 def stock_info(request, stock_name):
-    data =  open('stock_info\static\stock_info\stock_data.json', 'r')
+    data =  open('stock_info/static/stock_info/stock_data.json', 'r')
     json_data = json.loads(json.dumps(eval(data.read())))
     stock_name = json_data[stock_name]
     n = NSELive()
