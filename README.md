@@ -17,6 +17,7 @@ Live project deployed to heroku: [StockWatch](https://stockwatch-app.herokuapp.c
 ![HTML](https://img.shields.io/badge/-HTML-lightgrey)
 ![CSS](https://img.shields.io/badge/-CSS-9fc)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-orange)
+![JSON](https://img.shields.io/badge/-JSON-ff69d4)
 
 #### How to run:
 - Download the project to your local system or fork the project and clone it
