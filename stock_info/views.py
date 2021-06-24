@@ -4,7 +4,12 @@ from django.http import HttpResponse
 from jugaad_data.nse import NSELive
 
 def stock_info(request, stock_name):
+    if "search" in request.GET:
+        print(request.GET['data'])
     path = 'stock_info/static/stock_info/stock_data.json'
+    with open('static/updated_data.json', 'r') as file:
+        json_data = json.load(file)
+        search_input = json_data['search_input']
     with open(path, 'r') as j:
         json_data = json.loads(j.read())
     stock_name = json_data[stock_name]
@@ -28,6 +33,7 @@ def stock_info(request, stock_name):
         "price_info" : price_info,
         "info" : info,
         "security_info" : security_info,
-        "metadata" : metadata
+        "metadata" : metadata,
+        "search_input" : search_input
     }
     return render(request, "stock_info/stock_info.html", data_object)

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/png" href="{% static 'landing_page/logo.png' %}"/>
@@ -34,7 +35,7 @@
     <div style="float:left;">
       <a href="https://www.nseindia.com/" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fa fa-arrow-circle-right"></i>  NSE Website</button></a>
       <a href="https://www.bseindia.com/" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fa fa-arrow-circle-right"></i>  BSE Website</button></a>
-      <a href="/stockwatch/about" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fa fa-info-circle"></i>  About</button></a>
+      <a href="/stockwatch/about"><button type="button" class="btn btn-outline-light"><i class="fa fa-info-circle"></i>  About</button></a>
       <a href="https://github.com/vanigupta20024/StockWatch" target="_blank"><button type="button" class="btn btn-outline-light"><i class="fab fa fa-github"></i>  Contribute</button></a>
     </div>
   </nav>
@@ -42,12 +43,23 @@
       Please expect some delay while the page completely loads.
     </div>
     <div class="container" style="margin-left:8%;margin-right:10%;">
-      <h1 style="color:midnightblue;"><br>{{ name }}</h1>
-      {% if price_info.pChange < 0 %}
-        <h3 style="color: red;">{{ price_info.lastPrice }}  ({{ price_info.pChange }})</h3><br>
-      {% else %}
-        <h3 style="color: green;">{{ price_info.lastPrice }}  ({{ price_info.pChange }})</h3><br>
-      {% endif %}
+      <div class="row">
+        <div class="col">
+          <h1 style="color:midnightblue;"><br>{{ name }}</h1>
+        </div>
+        <div class="col">
+          <div class="search" style="display: grid; place-items:center; margin: 20px;">
+            <form class="form-inline">
+                <input id="search_input" class="form-control mr-sm-2" type="search" placeholder="Enter stock name to compare" style="width: 300px;margin-top:12%;">
+            </form>
+          </div>
+        </div>
+      </div>
+        {% if price_info.pChange < 0 %}
+          <h3 style="color: red;">&#8377; {{ price_info.lastPrice }}  ({{ price_info.pChange }}%)</h3><br>
+        {% else %}
+          <h3 style="color: green;">&#8377; {{ price_info.lastPrice }}  ({{ price_info.pChange }}%)</h3><br>
+        {% endif %}
       <div class="graph container" style="margin:auto;border:dashed;box-shadow: 5px 8px 20px 5px cornflowerblue;">
         <canvas id="myChart" width="300" height="200"></canvas>
       </div>
@@ -135,6 +147,24 @@
       $("#meta-info").hide();
       $("#alert").fadeTo(5000, 200).slideUp(200, function(){
         $("#alert").slideUp(200);
+      });
+      var search_input = JSON.parse("{{ search_input | escapejs }}")
+      $('#search_input').typeahead({
+        source:search_input,
+        afterSelect: function(val){
+          console.log(val, val.replace(' ', '-'))
+          val = val.replace('/\s/g','-')
+          alert(val)
+          $.ajax({
+            url: '/listing/stock_info/'+ val,
+            type: "GET",
+            dataType: 'JSON',
+            data: {"data": val, "search": true},
+            success:function(data){
+              $('#div').html(data)
+            }
+          });
+        }
       });
       var ctx = $('#myChart');
       var tick = {{ ticks | escapejs }}
