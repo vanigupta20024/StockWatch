@@ -5,9 +5,6 @@
 
 Website for viewing stock data or related information in real time. There could be a delay of 1 minute (local caching) since updating it every second will have a huge load on backend (in free services). Daily top losing and gainer stocks can be visible along with tick data. Most graphs have a live tick data with more than 10 thousand points.
 
-#### Website:
-Live project deployed to heroku: [StockWatch](https://stockwatch-app.herokuapp.com/)
-
 #### Tech stack:
 ![Django](https://img.shields.io/badge/-Django-red)
 ![Python](https://img.shields.io/badge/-Python%20-blueviolet)
