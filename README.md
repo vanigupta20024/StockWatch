@@ -38,5 +38,3 @@ Lists most viewed indices, top gainers of the day, top losers of the day and an 
 #### Stock Info:
 Financial information and metadata/company specific data related to a particular stock with graph and tick points.
 ![Info](https://github.com/vanigupta20024/StockWatch/blob/master/Readme_images/info_page.PNG)
-
-Special mentions: [Aakash Dinkar](https://github.com/aakashdinkar)
